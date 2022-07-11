@@ -3,7 +3,7 @@
     <AppTopBar
         title="Список контактов"
         :right-icon="require('@/assets/images/icons/plus.svg')"
-        @right-icon-click="$store.commit('phoneCallApp/addContact', { name: '', phoneNumber: '' })"
+        @right-icon-click="addContact"
         theme="light"
     />
     <ClassicInput
@@ -68,7 +68,11 @@ export default {
     openContact: function (contact) {
       this.$store.commit('phoneCallApp/setPreviousScreen', {screen: 'contacts', tab: 'contacts'})
       this.$store.commit('phoneCallApp/showContact', contact)
-    }
+    },
+    addContact: function () {
+      this.$store.commit('phoneCallApp/setPreviousScreen', {screen: 'contacts', tab: 'contacts'})
+      this.$store.commit('phoneCallApp/addContact', {phoneNumber: "", name: ""})
+    },
   },
 }
 </script>
